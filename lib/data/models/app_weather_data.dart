@@ -16,4 +16,22 @@ class AppWeatherData with _$AppWeatherData {
 
   factory AppWeatherData.fromJson(Map<String, dynamic> json) =>
       _$AppWeatherDataFromJson(json);
+
+  @override
+  // TODO: implement appSettings
+  WeatherSettings get appSettings => throw UnimplementedError();
+
+  @override
+  // TODO: implement currentWeather
+  CurrentWeather get currentWeather => throw UnimplementedError();
+
+  @override
+  // TODO: implement sevenDayForecast
+  List<DailyForecast> get sevenDayForecast => throw UnimplementedError();
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson
+    throw UnimplementedError();
+  }
 }

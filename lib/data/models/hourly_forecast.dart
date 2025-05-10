@@ -13,4 +13,26 @@ class HourlyForecast with _$HourlyForecast {
   }) = _HourlyForecast;
 
   factory HourlyForecast.fromJson(Map<String, dynamic> json) => _$HourlyForecastFromJson(json);
+
+  @override
+  // TODO: implement conditionCode
+  String get conditionCode => throw UnimplementedError();
+
+  @override
+  // TODO: implement iconId
+  String get iconId => throw UnimplementedError();
+
+  @override
+  // TODO: implement temperature
+  double get temperature => throw UnimplementedError();
+
+  @override
+  // TODO: implement time
+  DateTime get time => throw UnimplementedError();
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson
+    throw UnimplementedError();
+  }
 }

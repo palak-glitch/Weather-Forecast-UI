@@ -1,102 +1,71 @@
-import 'package:auto_route/auto_route.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
+import '../../../../data/models/app_weather_data.dart';
+import '../widgets/current_weather_panel.dart';
 
-class WeatherHomeScreen extends StatelessWidget {
-  const WeatherHomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  AppWeatherData? _weatherData;
+
+  @override
+  void initState() {
+    super.initState();
+    loadMockWeather();
+  }
+
+  Future<void> loadMockWeather() async {
+    final rawJson = await rootBundle.loadString(
+        'lib/features/weather/weather_mock_data/new_york_weather.json');
+    final jsonMap = json.decode(rawJson);
+    final data = AppWeatherData.fromJson(jsonMap);
+    setState(() {
+      _weatherData = data;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final weather = context.watch<WeatherProvider>().weatherData;
+    final weather = _weatherData?.currentWeather;
 
     return Scaffold(
-      body: CustomScrollView(
+      body: _weatherData == null
+          ? const Center(child: CircularProgressIndicator())
+          : CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 280,
             pinned: true,
+            expandedHeight: 250.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(weather.currentWeather.city),
-              background: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Image.asset(
-                    'assets/weather/${weather.currentWeather.iconId}.jpg',
-                    fit: BoxFit.cover,
-                  ),
-                  Container(color: Colors.black26),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 48),
-                      child: Text(
-                        '${weather.currentWeather.temperature}°',
-                        style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              title: Text(
+                '${weather!.city} • ${weather.temperature.toStringAsFixed(1)}°',
+                style: const TextStyle(color: Colors.white),
+              ),
+              background: Image.asset(
+                'assets/images/${weather.iconId}.jpg',
+                fit: BoxFit.cover,
               ),
             ),
             actions: [
               IconButton(
-                icon: Icon(Icons.settings),
-                onPressed: () => context.router.push(SettingsRoute()),
+                icon: const Icon(Icons.settings),
+                onPressed: () {
+                  // Navigate to settings
+                },
               )
             ],
           ),
           SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: _CurrentWeatherDetails(weather.currentWeather),
-            ),
-          ),
+            child: CurrentWeatherPanel(weather: weather),
+          )
         ],
       ),
     );
   }
 }
-
-
-class _CurrentWeatherDetails extends StatelessWidget {
-  final CurrentWeather weather;
-
-  const _CurrentWeatherDetails(this.weather);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _MetricRow(label: 'Humidity', value: '${weather.humidity}%'),
-        _MetricRow(label: 'Wind', value: '${weather.windSpeed} km/h ${weather.windDirection}'),
-        _MetricRow(label: 'Feels Like', value: '${weather.feelsLike}°'),
-        _MetricRow(label: 'Pressure', value: '${weather.pressure} hPa'),
-        _MetricRow(label: 'Visibility', value: '${weather.visibility} km'),
-      ],
-    );
-  }
-}
-
-class _MetricRow extends StatelessWidget {
-  final String label;
-  final String value;
-
-  const _MetricRow({required this.label, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: Row(
-        children: [
-          Expanded(child: Text(label, style: Theme.of(context).textTheme.bodyMedium)),
-          Text(value, style: Theme.of(context).textTheme.bodyMedium),
-        ],
-      ),
-    );
-  }
-}
-

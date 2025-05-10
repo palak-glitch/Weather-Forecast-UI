@@ -11,4 +11,18 @@ class WeatherSettings with _$WeatherSettings {
   }) = _WeatherSettings;
 
   factory WeatherSettings.fromJson(Map<String, dynamic> json) => _$WeatherSettingsFromJson(json);
+
+  @override
+  // TODO: implement isCelsius
+  bool get isCelsius => throw UnimplementedError();
+
+  @override
+  // TODO: implement selectedCityName
+  String get selectedCityName => throw UnimplementedError();
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson
+    throw UnimplementedError();
+  }
 }

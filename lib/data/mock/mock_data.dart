@@ -1,6 +1,5 @@
 import 'dart:convert';
-
-import 'package:weather_app/features/weather/data/models/app_weather_data.dart';
+import '../models/app_weather_data.dart';
 
 class MockWeatherData {
   static AppWeatherData get mumbai => AppWeatherData.fromJson(
@@ -13,6 +12,10 @@ class MockWeatherData {
 
   static AppWeatherData get tokyo => AppWeatherData.fromJson(
     jsonDecode(_tokyoJson) as Map<String, dynamic>,
+  );
+
+  static AppWeatherData get newyork => AppWeatherData.fromJson(
+    jsonDecode(_newyorkJson) as Map<String, dynamic>,
   );
 
   static const String _mumbaiJson = '''{
@@ -140,4 +143,47 @@ class MockWeatherData {
       "selectedCityName": "Tokyo"
     }
   }''';
+
+  static const String _newyorkJson = '''{
+    "currentWeather": {
+    "city": "New York",
+    "temperature": 18.5,
+    "conditionCode": "cloudy",
+    "conditionDescription": "Cloudy",
+    "humidity": 65,
+    "windSpeed": 12.0,
+    "windDirection": "NW",
+    "feelsLike": 17.0,
+    "pressure": 1015.0,
+    "visibility": 10.0,
+    "iconId": "cloud"
+  },
+    "sevenDayForecast": [
+      {
+        "date": "2025-05-10T00:00:00.000",
+        "highTemp": 22.0,
+        "lowTemp": 16.0,
+        "conditionCode": "cloudy",
+        "conditionDescription": "Overcast Clouds",
+        "iconId": "03d",
+        "precipitationProbability": 20.0,
+        "uvIndex": 5,
+        "sunrise": "2025-05-10T04:45:00.000",
+        "sunset": "2025-05-10T18:30:00.000",
+        "hourlyForecasts": [
+          {
+            "time": "2025-05-10T15:00:00.000",
+            "temperature": 20.0,
+            "conditionCode": "cloudy",
+            "iconId": "03d"
+          }
+        ]
+      }
+    ],
+   "appSettings": {
+    "isCelsius": true,
+    "selectedCityName": "New York"
+  }
+  }''';
+
 }
