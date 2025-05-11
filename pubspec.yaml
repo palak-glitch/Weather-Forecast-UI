@@ -51,8 +51,9 @@ dependencies:
   # Models
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
+  lottie: ^3.3.1
 
-  build_runner: ^2.4.15 # move here temporarily
+#  build_runner: ^2.4.15 # move here temporarily
 
 
 
@@ -60,6 +61,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  build_runner: ^2.4.15
   freezed: ^3.0.6
   json_serializable: ^6.9.5
   auto_route_generator: ^10.0.1
@@ -83,8 +85,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/
-#   - lib/features/data/mock_data.dart
+   - assets/images/
+   - assets/icons/
+   - lib/data/mock/
+   - assets/lottie/sunny.json
+   - assets/lottie/cloudy.json
+   - assets/lottie/rain.json
+   - assets/lottie/snow.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

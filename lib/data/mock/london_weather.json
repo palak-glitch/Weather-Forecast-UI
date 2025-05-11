@@ -1,0 +1,485 @@
+{
+  "currentWeather": {
+    "city": "London",
+    "temperature": 12.5,
+    "conditionCode": "rain",
+    "conditionDescription": "Rain Showers",
+    "humidity": 85,
+    "windSpeed": 15.3,
+    "windDirection": "W",
+    "feelsLike": 10.0,
+    "pressure": 1001.0,
+    "visibility": 5000.0,
+    "iconId": "rainy"
+  },
+  "sevenDayForecast": [
+    {
+      "date": "2025-05-10T00:00:00.000",
+      "highTemp": 15.0,
+      "lowTemp": 8.0,
+      "conditionCode": "rain",
+      "conditionDescription": "Rain Showers",
+      "iconId": "rainy",
+      "precipitationProbability": 80.0,
+      "uvIndex": 2,
+      "sunrise": "2025-05-10T05:15:00.000",
+      "sunset": "2025-05-10T20:10:00.000",
+      "hourlyForecasts": [
+        {
+          "time": "2025-05-10T12:00:00.000",
+          "temperature": 12.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-05-10T01:00:00.000",
+          "temperature": 12.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-05-10T02:00:00.000",
+          "temperature": 10.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-05-10T03:00:00.000",
+          "temperature": 10.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        },
+        {
+          "time": "2025-05-10T04:00:00.000",
+          "temperature": 12.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-05-10T05:00:00.000",
+          "temperature": 12.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-05-10T06:00:00.000",
+          "temperature": 10.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-05-10T07:00:00.000",
+          "temperature": 12.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        }
+      ]
+    },
+    {
+      "date": "2025-06-10T00:00:00.000",
+      "highTemp": 30.0,
+      "lowTemp": 20.0,
+      "conditionCode": "Sunny",
+      "conditionDescription": "Clear",
+      "iconId": "sun",
+      "precipitationProbability": 80.0,
+      "uvIndex": 2,
+      "sunrise": "2025-06-10T05:15:00.000",
+      "sunset": "2025-06-10T20:10:00.000",
+      "hourlyForecasts": [
+        {
+          "time": "2025-06-10T12:00:00.000",
+          "temperature": 28.0,
+          "conditionCode": "sunny",
+          "iconId": "sun"
+        },
+        {
+          "time": "2025-06-10T01:00:00.000",
+          "temperature": 28.0,
+          "conditionCode": "sunny",
+          "iconId": "sun"
+        },
+        {
+          "time": "2025-06-10T02:00:00.000",
+          "temperature": 29.0,
+          "conditionCode": "sunny",
+          "iconId": "sun"
+        },
+        {
+          "time": "2025-06-10T03:00:00.000",
+          "temperature": 29.0,
+          "conditionCode": "sunny",
+          "iconId": "sun"
+        },
+        {
+          "time": "2025-06-10T04:00:00.000",
+          "temperature": 28.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        },
+        {
+          "time": "2025-06-10T05:00:00.000",
+          "temperature": 30.0,
+          "conditionCode": "sunny",
+          "iconId": "sun"
+        },
+        {
+          "time": "2025-06-10T05:00:00.000",
+          "temperature": 30.0,
+          "conditionCode": "sunny",
+          "iconId": "sun"
+        },
+        {
+          "time": "2025-06-10T06:00:00.000",
+          "temperature": 30.0,
+          "conditionCode": "sunny",
+          "iconId": "sun"
+        },
+        {
+          "time": "2025-06-10T07:00:00.000",
+          "temperature": 28.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        }
+      ]
+    },
+    {
+      "date": "2025-07-10T00:00:00.000",
+      "highTemp": 2.0,
+      "lowTemp": -5.0,
+      "conditionCode": "snow",
+      "conditionDescription": "snow Showers",
+      "iconId": "snow",
+      "precipitationProbability": 20.0,
+      "uvIndex": 2,
+      "sunrise": "2025-07-10T05:15:00.000",
+      "sunset": "2025-07-10T20:10:00.000",
+      "hourlyForecasts": [
+        {
+          "time": "2025-07-10T12:00:00.000",
+          "temperature": -4.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-07-10T01:00:00.000",
+          "temperature": -4.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-07-10T02:00:00.000",
+          "temperature": -3.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-07-10T03:00:00.000",
+          "temperature": -3.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-07-10T04:00:00.000",
+          "temperature": -1.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        },
+        {
+          "time": "2025-07-10T05:00:00.000",
+          "temperature": -1.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-07-10T05:00:00.000",
+          "temperature": -1.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-07-10T06:00:00.000",
+          "temperature": -2.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-07-10T07:00:00.000",
+          "temperature": 0.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        }
+      ]
+    },
+    {
+      "date": "2025-08-10T00:00:00.000",
+      "highTemp": 20.0,
+      "lowTemp": 10.0,
+      "conditionCode": "rain",
+      "conditionDescription": "Rain Showers",
+      "iconId": "rainy",
+      "precipitationProbability": 80.0,
+      "uvIndex": 2,
+      "sunrise": "2025-08-10T05:15:00.000",
+      "sunset": "2025-08-10T20:10:00.000",
+      "hourlyForecasts": [
+        {
+          "time": "2025-08-10T12:00:00.000",
+          "temperature": 18.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-08-10T01:00:00.000",
+          "temperature": 18.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-08-10T02:00:00.000",
+          "temperature": 19.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-08-10T03:00:00.000",
+          "temperature": 19.0,
+          "conditionCode": "sun",
+          "iconId": "sun"
+        },
+        {
+          "time": "2025-08-10T04:00:00.000",
+          "temperature": 18.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        },
+        {
+          "time": "2025-08-10T05:00:00.000",
+          "temperature": 16.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-08-10T05:00:00.000",
+          "temperature": 16.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-08-10T06:00:00.000",
+          "temperature": 17.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-08-10T07:00:00.000",
+          "temperature": 16.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        }
+      ]
+    },
+    {
+      "date": "2025-09-10T00:00:00.000",
+      "highTemp": 23.0,
+      "lowTemp": 14.0,
+      "conditionCode": "rain",
+      "conditionDescription": "Rain Showers",
+      "iconId": "rainy",
+      "precipitationProbability": 80.0,
+      "uvIndex": 2,
+      "sunrise": "2025-09-10T05:15:00.000",
+      "sunset": "2025-09-10T20:10:00.000",
+      "hourlyForecasts": [
+        {
+          "time": "2025-09-10T12:00:00.000",
+          "temperature": 18.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-09-10T01:00:00.000",
+          "temperature": 18.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-09-10T02:00:00.000",
+          "temperature": 19.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-09-10T03:00:00.000",
+          "temperature": 19.0,
+          "conditionCode": "sun",
+          "iconId": "sun"
+        },
+        {
+          "time": "2025-09-10T04:00:00.000",
+          "temperature": 18.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        },
+        {
+          "time": "2025-09-10T05:00:00.000",
+          "temperature": 16.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-09-10T05:00:00.000",
+          "temperature": 16.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-09-10T06:00:00.000",
+          "temperature": 17.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-09-10T07:00:00.000",
+          "temperature": 16.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        }
+      ]
+    },
+    {
+      "date": "2025-10-10T00:00:00.000",
+      "highTemp": 1.0,
+      "lowTemp": -6.0,
+      "conditionCode": "snow",
+      "conditionDescription": "snow Showers",
+      "iconId": "snow",
+      "precipitationProbability": 20.0,
+      "uvIndex": 2,
+      "sunrise": "2025-10-10T05:15:00.000",
+      "sunset": "2025-10-10T20:10:00.000",
+      "hourlyForecasts": [
+        {
+          "time": "2025-10-10T12:00:00.000",
+          "temperature": -4.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-10-10T01:00:00.000",
+          "temperature": -4.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-10-10T02:00:00.000",
+          "temperature": -3.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-10-10T03:00:00.000",
+          "temperature": -3.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-10-10T04:00:00.000",
+          "temperature": -1.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        },
+        {
+          "time": "2025-10-10T05:00:00.000",
+          "temperature": -1.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-10-10T05:00:00.000",
+          "temperature": -1.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-10-10T06:00:00.000",
+          "temperature": -2.0,
+          "conditionCode": "snow",
+          "iconId": "snow"
+        },
+        {
+          "time": "2025-10-10T07:00:00.000",
+          "temperature": 0.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        }
+      ]
+    },
+    {
+      "date": "2025-11-10T00:00:00.000",
+      "highTemp": 15.0,
+      "lowTemp": 8.0,
+      "conditionCode": "rain",
+      "conditionDescription": "Rain Showers",
+      "iconId": "rainy",
+      "precipitationProbability": 80.0,
+      "uvIndex": 2,
+      "sunrise": "2025-11-10T05:15:00.000",
+      "sunset": "2025-11-10T20:10:00.000",
+      "hourlyForecasts": [
+        {
+          "time": "2025-11-10T12:00:00.000",
+          "temperature": 12.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-11-10T01:00:00.000",
+          "temperature": 12.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-11-10T02:00:00.000",
+          "temperature": 10.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-11-10T03:00:00.000",
+          "temperature": 10.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        },
+        {
+          "time": "2025-11-10T04:00:00.000",
+          "temperature": 12.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-11-10T05:00:00.000",
+          "temperature": 12.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-11-10T06:00:00.000",
+          "temperature": 10.0,
+          "conditionCode": "rain",
+          "iconId": "rainy"
+        },
+        {
+          "time": "2025-11-10T07:00:00.000",
+          "temperature": 12.0,
+          "conditionCode": "cloud",
+          "iconId": "cloudy"
+        }
+      ]
+    }
+  ],
+  "appSettings": {
+    "isCelsius": true,
+    "selectedCityName": "London"
+  }
+}

@@ -6,8 +6,11 @@ import 'weather_settings.dart';
 part 'app_weather_data.freezed.dart';
 part 'app_weather_data.g.dart';
 
+// to make part file run below command
+// flutter pub run build_runner build --delete-conflicting-outputs
+
 @freezed
-class AppWeatherData with _$AppWeatherData {
+abstract class AppWeatherData with _$AppWeatherData {
   const factory AppWeatherData({
     required CurrentWeather currentWeather,
     required List<DailyForecast> sevenDayForecast,
@@ -17,21 +20,4 @@ class AppWeatherData with _$AppWeatherData {
   factory AppWeatherData.fromJson(Map<String, dynamic> json) =>
       _$AppWeatherDataFromJson(json);
 
-  @override
-  // TODO: implement appSettings
-  WeatherSettings get appSettings => throw UnimplementedError();
-
-  @override
-  // TODO: implement currentWeather
-  CurrentWeather get currentWeather => throw UnimplementedError();
-
-  @override
-  // TODO: implement sevenDayForecast
-  List<DailyForecast> get sevenDayForecast => throw UnimplementedError();
-
-  @override
-  Map<String, dynamic> toJson() {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
 }
