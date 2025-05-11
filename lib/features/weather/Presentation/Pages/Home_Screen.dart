@@ -1,10 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import '../../../../Provider/Settings_Provider.dart';
 import '../../../../data/models/app_weather_data.dart';
 import '../widgets/ForcastList_widget.dart';
 import '../widgets/current_weather_panel.dart';
 import '../widgets/weatherBackgroundAnimation.dart';
+import 'Settings_Screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,9 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> loadMockWeather() async {
+    final settings = Provider.of<SettingsProvider>(context, listen: false);
+    String cityKey = settings.selectedCity.toLowerCase().replaceAll(' ', '_');
     try {
       final rawJson = await rootBundle.loadString(
-        'lib/data/mock/new_york_weather.json',
+        'lib/data/mock/${cityKey}_weather.json',
+        // 'lib/data/mock/New York_weather.json',
       );
       final jsonMap = json.decode(rawJson);
       final data = AppWeatherData.fromJson(jsonMap);
@@ -41,6 +47,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final weather = _weatherData?.currentWeather;
+    final settings = Provider.of<SettingsProvider>(context);
+
+    // Convert the temperature based on isCelsius setting
+    final temperature = settings.isCelsius
+        ? weather?.temperature
+        : (weather?.temperature ?? 0) * 9/5 + 32; // Fahrenheit conversion
+
+    final city = settings.selectedCity.isNotEmpty ? settings.selectedCity : weather?.city ?? 'Default City';
 
     return Scaffold(
       body: Container(
@@ -61,11 +75,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       expandedHeight: 250.0,
                       flexibleSpace: FlexibleSpaceBar(
                         title: Text(
-                          '${weather!.city} • ${weather.temperature.toStringAsFixed(1)}°',
+                          '$city • ${temperature?.toStringAsFixed(1)}°',
+                          // '${weather!.city} • ${weather.temperature.toStringAsFixed(1)}°',
                           style: const TextStyle(color: Colors.black),
                         ),
                         background: WeatherAnimatedBackground(
-                          conditionCode: weather.conditionCode,
+                          conditionCode: weather!.conditionCode,
                         ),
                         // Image.asset(
                         //   'assets/images/${weather.iconId}.png',
@@ -77,8 +92,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       actions: [
                         IconButton(
                           icon: const Icon(Icons.settings, color: Colors.black),
-                          onPressed: () {
+                          onPressed: () async{
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
                             // Navigate to settings
+                            await loadMockWeather();
                           },
                         ),
                       ],

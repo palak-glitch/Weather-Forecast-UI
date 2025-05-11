@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import '../../../../data/models/daily_forecast.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../data/models/hourly_forecast.dart';
 import '../widgets/weatherBackgroundAnimation.dart';
 
 class ForecastDetailScreen extends StatelessWidget {
   final DailyForecast forecast;
 
   const ForecastDetailScreen({super.key, required this.forecast});
+
+  String formatTime(DateTime dt) => DateFormat('hh:mm a').format(dt);
+  String formatHour(DateTime dt) => DateFormat('ha').format(dt);
+  String formatDate(DateTime dt) => DateFormat('EEEE, MMM d').format(dt);
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +42,6 @@ class ForecastDetailScreen extends StatelessWidget {
             ),
           ),
 
-          // Blur Glass Panel
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -92,24 +96,7 @@ class ForecastDetailScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final hour = forecast.hourlyForecasts[index];
                         final time = DateFormat.Hm().format(hour.time);
-                        return Container(
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(time, style: _infoStyle()),
-                              Image.asset(
-                                'assets/icons/${hour.iconId}.png',
-                                height: 40,
-                              ),
-                              Text('${hour.temperature}°', style: _infoStyle()),
-                            ],
-                          ),
-                        );
+                        return _HourlyForecastCard(time, hour);
                       },
                       separatorBuilder: (_, __) => const SizedBox(width: 12),
                     ),
@@ -159,4 +146,26 @@ class ForecastDetailScreen extends StatelessWidget {
     fontSize: 16,
     color: Colors.white,
   );
+
+  Widget _HourlyForecastCard(var time, HourlyForecast hourly) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.2),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(time, style: _infoStyle()),
+          Image.asset(
+            'assets/icons/${hourly.iconId}.png',
+            height: 40,
+          ),
+          Text('${hourly.temperature}°', style: _infoStyle()),
+        ],
+      ),
+    );
+  }
+
 }
