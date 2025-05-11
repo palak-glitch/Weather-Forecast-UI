@@ -69,8 +69,8 @@ A clean and responsive Flutter app that fetches and displays a list of articles 
 ## Screenshots (Optional)
 [//]: # (![Home Screen]&#40;assets/1.jpg&#41;)
 
-<img src="assets/images/1.jpg" width="200" height="200" alt="Home Screen">  <img src="assets/images/2.jpg" width="200" height="200" alt="Home Screen">
-<img src="assets/images/3.jpg" width="200" height="200" alt="Home Screen">  <img src="assets/images/4.jpg" width="200" height="200" alt="Home Screen">
-<img src="assets/images/5.jpg" width="200" height="200" alt="Forcast Detail Screen">  <img src="assets/images/6.jpg" height="200" width="200" alt="Forcast Detail Screen">
-<img src="assets/images/7.jpg" width="200" height="200" alt="Forcast Detail Screen">  <img src="assets/images/8.jpg" height="200" width="200" alt="Settings Screen">
-<img src="assets/images/9.jpg" width="200" height="200" alt="Settings Screen">  <img src="assets/images/10.jpg" height="200" width="200" alt="Settings Screen">
+<img src="assets/images/1.jpg" width="150" height="200" alt="Home Screen">  <img src="assets/images/2.jpg" width="150" height="200" alt="Home Screen">
+<img src="assets/images/3.jpg" width="150" height="200" alt="Home Screen">  <img src="assets/images/4.jpg" width="150" height="200" alt="Home Screen">
+<img src="assets/images/5.jpg" width="150" height="200" alt="Forcast Detail Screen">  <img src="assets/images/6.jpg" height="200" width="150" alt="Forcast Detail Screen">
+<img src="assets/images/7.jpg" width="150" height="200" alt="Forcast Detail Screen">  <img src="assets/images/8.jpg" height="200" width="150" alt="Settings Screen">
+<img src="assets/images/9.jpg" width="150" height="200" alt="Settings Screen">  <img src="assets/images/10.jpg" height="200" width="150" alt="Settings Screen">
