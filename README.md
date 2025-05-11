@@ -49,15 +49,21 @@ A clean and responsive Flutter app that fetches and displays a list of articles 
 - utils/ for formatting and conversions
 - router/ for navigation (via auto_route)
 
+📦 State Management
+- SettingsProvider holds city and temperature unit settings.
+- Weather data is loaded from mock JSON based on the selected city.
+- Changes in settings trigger UI and data reload.
 
-## State Management Explanation
-- The app uses the Provider package to manage state in a reactive and scalable way. ArticleProvider handles fetching, filtering, and
-  persisting favorite articles, notifying the UI of state changes using ChangeNotifier.
 
+## challenges faced
+- To implement freezed_annotation as it was my 1st time using it. The error of missing implementation took some time.
+- To implement auto_route as it was my 1st time using it. no implementation as no time left.
 
 ## Known Issues / Limitations
-- No pagination — all articles are fetched at once.
-- Currently supports only basic error handling and no retry mechanism.
+- 🌍 No live API — mock data only
+- ❌ No error display UI on JSON read failure
+- 🧪 No unit/integration tests yet
+- 🌐 Locale-based formatting for symbols is basic 
 
 
 ## Screenshots (Optional)
