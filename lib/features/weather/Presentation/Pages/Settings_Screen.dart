@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
+import '../../../../Provider/Settings_Provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -10,10 +10,9 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  final form = FormGroup({
-    'isCelsius': FormControl<bool>(value: true),
-    'selectedCity': FormControl<String>(value: 'New York'),
-  });
+  late bool _isCelsius;
+  late String _selectedCity;
+  late bool _symbolFirst;
 
   final List<String> cities = [
     'New York',
@@ -23,63 +22,80 @@ class _SettingsScreenState extends State<SettingsScreen> {
     'Sydney',
   ];
 
+  final List<String> locales = [
+    'en_US',
+    'fr_FR',
+    'de_DE',
+    'hi_IN',
+    'ja_JP',
+  ];
+
   @override
   void initState() {
     super.initState();
-    _loadSettings();
+    final settings = Provider.of<SettingsProvider>(context, listen: false);
+    _isCelsius = settings.isCelsius;
+    _selectedCity = settings.selectedCity;
+    _symbolFirst = settings.temperatureSymbolFirst;
   }
 
-  Future<void> _loadSettings() async {
-    final prefs = await SharedPreferences.getInstance();
-    form.control('isCelsius').value = prefs.getBool('isCelsius') ?? true;
-    form.control('selectedCity').value = prefs.getString('selectedCity') ?? 'New York';
-  }
-
-  Future<void> _saveSettings() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isCelsius', form.control('isCelsius').value);
-    await prefs.setString('selectedCity', form.control('selectedCity').value);
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Settings saved successfully.')),
-    );
-    // You can also trigger weather data update here based on the city
+  void _saveSettings() {
+    Provider.of<SettingsProvider>(context, listen: false)
+        .updateSettings(_isCelsius, _selectedCity, _symbolFirst);
+    Navigator.pop(context); // Go back to HomeScreen
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
-      body: ReactiveForm(
-        formGroup: form,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              ReactiveSwitchListTile(
-                formControlName: 'isCelsius',
-                title: const Text('Use Celsius'),
-              ),
-              const SizedBox(height: 16),
-              ReactiveDropdownField<String>(
-                formControlName: 'selectedCity',
-                decoration: const InputDecoration(
-                  labelText: 'Select City',
-                  border: OutlineInputBorder(),
-                ),
-                items: cities
-                    .map((city) => DropdownMenuItem(
-                  value: city,
-                  child: Text(city),
-                ))
-                    .toList(),
-              ),
-              const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: _saveSettings,
-                child: const Text('Save Settings'),
-              )
-            ],
-          ),
+      appBar: AppBar(
+        title: const Text('Settings'),
+        actions: [
+          IconButton(icon: const Icon(Icons.save), onPressed: _saveSettings),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Temperature Unit',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SwitchListTile(
+              title: Text(_isCelsius ? 'Celsius (°C)' : 'Fahrenheit (°F)'),
+              value: _isCelsius,
+              onChanged: (value) {
+                setState(() {
+                  _isCelsius = value;
+                });
+              },
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Select City',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            DropdownButton<String>(
+              isExpanded: true,
+              value: _selectedCity,
+              onChanged: (value) {
+                if (value != null) {
+                  setState(() {
+                    _selectedCity = value;
+                  });
+                }
+              },
+              items:
+                  cities
+                      .map(
+                        (city) =>
+                            DropdownMenuItem(value: city, child: Text(city)),
+                      )
+                      .toList(),
+            ),
+          ],
         ),
       ),
     );

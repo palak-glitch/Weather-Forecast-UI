@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../../Provider/Settings_Provider.dart';
+import '../../../../Utils/utils.dart';
 import '../../../../data/models/daily_forecast.dart';
 import 'package:intl/intl.dart';
 
@@ -14,11 +17,14 @@ class ForecastDetailScreen extends StatelessWidget {
   String formatHour(DateTime dt) => DateFormat('ha').format(dt);
   String formatDate(DateTime dt) => DateFormat('EEEE, MMM d').format(dt);
 
-
   @override
   Widget build(BuildContext context) {
     final day = DateFormat.EEEE().format(forecast.date);
     final date = DateFormat.yMMMMd().format(forecast.date);
+
+    final settings = Provider.of<SettingsProvider>(context);
+    final lowTemperature = convertTemperature(forecast.lowTemp, settings.isCelsius);
+    final highTemperature = convertTemperature(forecast.highTemp, settings.isCelsius);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -73,7 +79,8 @@ class ForecastDetailScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          '${forecast.highTemp.toStringAsFixed(1)}° / ${forecast.lowTemp.toStringAsFixed(1)}°',
+                          '${lowTemperature.toStringAsFixed(1)}${settings.isCelsius?'°C':'°F'} / ${highTemperature.toStringAsFixed(1)}${settings.isCelsius?'°C':'°F'}',
+                          // '${forecast.highTemp.toStringAsFixed(1)}° / ${forecast.lowTemp.toStringAsFixed(1)}°',
                           style: const TextStyle(
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
@@ -96,7 +103,7 @@ class ForecastDetailScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final hour = forecast.hourlyForecasts[index];
                         final time = DateFormat.Hm().format(hour.time);
-                        return _HourlyForecastCard(time, hour);
+                        return _HourlyForecastCard(time, hour,settings);
                       },
                       separatorBuilder: (_, __) => const SizedBox(width: 12),
                     ),
@@ -147,7 +154,8 @@ class ForecastDetailScreen extends StatelessWidget {
     color: Colors.white,
   );
 
-  Widget _HourlyForecastCard(var time, HourlyForecast hourly) {
+  Widget _HourlyForecastCard(var time, HourlyForecast hourly, final settings) {
+    final Temperature = convertTemperature(hourly.temperature, settings.isCelsius);
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -162,7 +170,7 @@ class ForecastDetailScreen extends StatelessWidget {
             'assets/icons/${hourly.iconId}.png',
             height: 40,
           ),
-          Text('${hourly.temperature}°', style: _infoStyle()),
+          Text('$Temperature${settings.isCelsius?'°C':'°F'}', style: _infoStyle()),
         ],
       ),
     );

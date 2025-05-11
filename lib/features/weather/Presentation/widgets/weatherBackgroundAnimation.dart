@@ -14,8 +14,9 @@ class WeatherAnimatedBackground extends StatelessWidget {
         return 'assets/lottie/cloudy.json';
       case 'snow':
         return 'assets/lottie/snow.json';
-      // case 'clear':
-      case 'sunny':
+      case 'clear':
+      // case 'sunny':
+        return 'assets/lottie/sunny.json';
       default:
         return 'assets/lottie/sunny.json';
     }
